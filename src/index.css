@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.card {
+  margin-top: 6px;
+  object-fit: cover
+  
+}
+
+/* .cardsize{
+  height: 250px;
+} */
+
+.shopback{
+  background-color: rgb(208, 208, 235);
+}
