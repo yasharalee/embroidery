@@ -7,15 +7,25 @@ import Navbar from './navbar'
 import FrontCategories  from "./frontCategories";
 import Cart from './cart';
 import DetailPage from './chosenitem';
+import { addToCart } from '../redux/actionCreator';
 
 
 
 
 const mapStateToProps = state => {
-    return{ Items: state.Items };
+    return {
+        Items: state.Items,
+        CartArr: state.CartArr
+    };
 };
 
-const cartArray = [];
+const mapDispatchToProps = {
+   
+    addToCart: (item) => ( addToCart(item))
+
+};
+
+
 
 class Main extends Component {
 
@@ -23,28 +33,31 @@ class Main extends Component {
     constructor(props) {
         super(props);
 
-        this.cartdata = this.cartdata.bind(this);
+    
+   
     }
 
-    cartdata =(item) => {
-        cartArray.push(item);
-        console.log(cartArray);
-     
-        
-    }
+
+   
+
+  
 
     render() { 
 
         const Cartpass = () => {
-            console.log(cartArray);
+            console.log(this.props.CartArr.CartArr);
+            
             return (
-                     <Cart cartArrayS={cartArray} />
+                <Cart
+                    CartArrayS={this.props.CartArr.CartArr}
+                
+                />
                );
         };
 
         const HeaderC = () => {
             return (
-                <Header itemsInCart={cartArray.length} />
+                <Header itemsInCart={this.props.CartArr.CartArr.length} />
             );
         };
   
@@ -52,7 +65,7 @@ class Main extends Component {
             return (
                 <DetailPage
                     item={this.props.Items.filter(item => +item.id === +match.params.itemId)[0]}
-                    data={this.cartdata}
+                    addToCart={this.props.addToCart}
                     
                 />
             );
@@ -76,4 +89,4 @@ class Main extends Component {
     }
 }
  
-export default withRouter(connect(mapStateToProps)(Main));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

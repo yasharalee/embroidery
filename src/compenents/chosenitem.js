@@ -1,3 +1,4 @@
+import { event } from 'jquery';
 import React, { Component } from 'react';
 
 
@@ -5,7 +6,6 @@ import React, { Component } from 'react';
 
 
 function Renderitem({item}) {
-    console.log(item);
     return (
 
                 <React.Fragment >
@@ -46,16 +46,21 @@ function RenderDescription({item}) {
 }
 
 
-const arrToSend = [];
+
+
 
 class Shoppingbox extends Component {
 
     constructor(props) {
         super(props);
-       
-    }
 
+        this.handleClick = this.handleClick.bind(this);
+    }
     
+    handleClick() {
+        const item = this.props.item;
+        this.props.addToCart(item);
+  }
  
     render() {
         const item = this.props.item;
@@ -66,8 +71,8 @@ class Shoppingbox extends Component {
                             <h1> $ {item.price}</h1>
                             <hr/>
                        </div>
-                   
-                    <div className="form-group mt-4">
+         <form >     
+            <div className="form-group mt-4">
                         <select className="form-control" id="capSize" name="capSize">
                             <option className="disabled">Cap Size</option>
                             <option value="small">small</option>
@@ -95,10 +100,11 @@ class Shoppingbox extends Component {
                         </button>
                        
                         </span>
-                    </div>
-                    <button type="submit" onClick={()=>this.props.data(item)} className="btn btn-primary btn-block" name="addtocart">Add to cart</button>
-                    <button type="button" className="btn btn-primary btn-block" name="customize">Customize</button>
-
+            </div>
+                    <button type="submit" onClick={this.handleClick} className="btn btn-primary btn-block" name="addtocart">Add to cart</button>
+            <button type="button" className="btn btn-primary btn-block" name="customize">Customize</button>
+          
+</form>
         </React.Fragment>
      )
     }
@@ -108,19 +114,19 @@ class Shoppingbox extends Component {
 
 
 
-function DetailPage(props) {
+function DetailPage({item, addToCart}) {
 
     return (
         <div className="container mb-5 px-5">
              <div className="row d-flex">
                 <div className="col-12 col-sm-4">
-                    <Renderitem item={props.item} />
+                    <Renderitem item={item} />
                 </div>
                 <div className="col-12 col-sm-6 mt-4">
-                    <RenderDescription item={props.item} />
+                    <RenderDescription item={item} />
                 </div>
                 <div className="col-10 col-sm-2 mx-auto mt-sm-4 shopback" >
-                    <Shoppingbox  item={props.item} data={props.data} />
+                    <Shoppingbox item={item}  addToCart={addToCart}  />
                 </div>
             </div>
         </div>
