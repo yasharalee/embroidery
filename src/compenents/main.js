@@ -64,7 +64,7 @@ class Main extends Component {
         const itemwithid = ({ match }) => {
             return (
                 <DetailPage
-                    item={this.props.Items.filter(item => +item.id === +match.params.itemId)[0]}
+                    item={this.props.Items.filter(item => item.id === +match.params.itemId)[0]}
                     addToCart={this.props.addToCart}
                     
                 />

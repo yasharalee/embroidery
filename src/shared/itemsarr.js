@@ -1,7 +1,7 @@
 
 export const ITEMS = [
     {
-        id : '1',
+        id : 1,
         name:'Pretty hat',
         frontShape: "flatBill",
         Closure: "velcore",
@@ -9,7 +9,7 @@ export const ITEMS = [
         color: "black",
         size: "small",
         price: 20.99,
-        mainImage: '/imgs/5.jpg',
+        mainImage: '/imgs/1.png',
         babyImage1:'',
         babyImage2: '',
         babyImage3: '',
@@ -22,7 +22,7 @@ export const ITEMS = [
         bulletthree:"bullet filler three"
     },
     {
-        id : '2',
+        id : 2,
         name:'Pretty hat',
         frontShape: "flatBill",
         Closure: "snapback",
@@ -30,7 +30,7 @@ export const ITEMS = [
         color: "blue",
         size: "large",
         price: 20.99,
-        mainImage: '/imgs/6.jpg',
+        mainImage: '/imgs/2.png',
         babyImage1:'',
         babyImage2: '',
         babyImage3: '',
@@ -43,7 +43,7 @@ export const ITEMS = [
         bulletthree:"bullet filler three"
     },
     {
-        id : '3',
+        id : 3,
         name:'Pretty hat',
         frontShape: "flatBill",
         Closure: "buckle",
@@ -51,7 +51,7 @@ export const ITEMS = [
         color: "yellow",
         size: "medium",
         price: 20.99,
-        mainImage: '/imgs/10.jpg',
+        mainImage: '/imgs/3.png',
         babyImage1:'',
         babyImage2: '',
         babyImage3: '',
@@ -64,7 +64,7 @@ export const ITEMS = [
         bulletthree:"bullet filler three"
     },
     {
-        id : '4',
+        id : 4,
         name:'Pretty hat',
         frontShape: "unstructured",
         Closure: "fitit",
@@ -72,7 +72,7 @@ export const ITEMS = [
         color: "gray",
         size: "xlarge",
         price: 20.99,
-        mainImage: '/imgs/6.jpg',
+        mainImage: '/imgs/4.png',
         babyImage1:'',
         babyImage2: '',
         babyImage3: '',
@@ -85,7 +85,7 @@ export const ITEMS = [
         bulletthree:"bullet filler three"
     },
     {
-        id : '5',
+        id : 5,
         name:'Pretty hat',
         frontShape: "slightly",
         Closure: "velcore",
@@ -93,7 +93,7 @@ export const ITEMS = [
         color: "black",
         size: "small",
         price: 20.99,
-         mainImage: '/imgs/10.jpg',
+         mainImage: '/imgs/5.png',
         babyImage1:'',
         babyImage2: '',
         babyImage3: '',
@@ -106,7 +106,7 @@ export const ITEMS = [
         bulletthree:"bullet filler three"
     },
     {
-        id : '6',
+        id : 6,
         name:'Pretty hat',
         frontShape: "slightly",
         Closure: "snapback",
@@ -114,7 +114,7 @@ export const ITEMS = [
         color: "blue",
         size: "large",
         price: 20.99,
-        mainImage: '/imgs/10.jpg',
+        mainImage: '/imgs/7.png',
         babyImage1:'',
         babyImage2: '',
         babyImage3: '',
@@ -127,7 +127,7 @@ export const ITEMS = [
         bulletthree:"bullet filler three"
     },
     {
-        id : '7',
+        id : 7,
         name:'Pretty hat',
         frontShape: "slightly",
         Closure: "buckle",
@@ -135,7 +135,7 @@ export const ITEMS = [
         color: "yellow",
         size: "medium",
         price: 20.99,
-        mainImage: '/imgs/5.jpg',
+        mainImage: '/imgs/6.png',
         babyImage1:'',
         babyImage2: '',
         babyImage3: '',
@@ -148,7 +148,7 @@ export const ITEMS = [
         bulletthree:"bullet filler three"
     },
     {
-        id : '8',
+        id : 8,
         name:'Pretty hat',
         frontShape: "flatBill",
         Closure: "fitit",
@@ -156,7 +156,7 @@ export const ITEMS = [
         color: "gray",
         size: "xlarge",
         price: 20.99,
-        mainImage: '/imgs/5.jpg',
+        mainImage: '/imgs/7.png',
         babyImage1:'',
         babyImage2: '',
         babyImage3: '',
@@ -169,7 +169,7 @@ export const ITEMS = [
         bulletthree:"bullet filler three"
     },
     {
-        id : '9',
+        id : 9,
         name:'Pretty hat',
         frontShape: "curved",
         Closure: "velcore",
@@ -177,7 +177,7 @@ export const ITEMS = [
         color: "black",
         size: "small",
         price: 20.99,
-        mainImage: '/imgs/6.jpg',
+        mainImage: '/imgs/8.png',
         babyImage1:'',
         babyImage2: '',
         babyImage3: '',
@@ -190,7 +190,7 @@ export const ITEMS = [
         bulletthree:"bullet filler three"
     },
     {
-        id : '10',
+        id : 10,
         name:'Pretty hat',
         frontShape: "curved",
         Closure: "snapback",
@@ -198,7 +198,7 @@ export const ITEMS = [
         color: "blue",
         size: "large",
         price: 20.99,
-        mainImage: '/imgs/5.jpg',
+        mainImage: '/imgs/9.png',
         babyImage1:'',
         babyImage2: '',
         babyImage3: '',
@@ -211,7 +211,7 @@ export const ITEMS = [
         bulletthree:"bullet filler three"
     },
     {
-        id : '11',
+        id : 11,
         name:'Pretty hat',
         frontShape: "curved",
         Closure: "buckle",
@@ -219,7 +219,7 @@ export const ITEMS = [
         color: "yellow",
         size: "medium",
         price: 20.99,
-        mainImage: '/imgs/10.jpg',
+        mainImage: '/imgs/10.png',
         babyImage1:'',
         babyImage2: '',
         babyImage3: '',
@@ -232,7 +232,7 @@ export const ITEMS = [
         bulletthree:"bullet filler three"
     },
     {
-        id : '12',
+        id : 12,
         name:'Pretty hat',
         frontShape: "curved",
         Closure: "fitit",
@@ -240,7 +240,7 @@ export const ITEMS = [
         color: "yellow",
         size: "medium", 
         price: 20.99,
-        mainImage: '/imgs/10.jpg',
+        mainImage: '/imgs/8.png',
         babyImage1:'',
         babyImage2: '',
         babyImage3: '',
