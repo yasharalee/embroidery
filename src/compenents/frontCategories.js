@@ -18,7 +18,7 @@ class FrontCategories extends Component {
                         <Link to={`/category/${flatbil.id}`}>
                             <CardImg top className="cardsize" src={flatbil.mainImage} alt={flatbil.name} />
                             <CardBody>
-                                <CardTitle>{flatbil.name}</CardTitle>
+                                <CardTitle>{ flatbil.name }<br/>{flatbil.price}</CardTitle>
                             </CardBody>
                         </Link>
                     </Card>
@@ -32,12 +32,14 @@ class FrontCategories extends Component {
        const filteredslightly = this.props.items.filter(mhat2=> mhat2.frontShape === "slightly").map(slightly => {
         return(
          <div key={slightly.id} className="col-6 col-sm-4 col-md-3">
-             <Card className="card">
-                 <CardImg top  className="cardsize" src={slightly.mainImage} alt={slightly.name} />
-                     <CardBody>
-                         <CardTitle>{slightly.name}</CardTitle>
-                     </CardBody>
-            </Card>
+                    <Card className="card">
+                        <Link to={`/category/${slightly.id}`}>
+                            <CardImg top className="cardsize" src={slightly.mainImage} alt={slightly.name} />
+                            <CardBody>
+                                <CardTitle>{ slightly.name }<br/>{slightly.price}</CardTitle>
+                            </CardBody>
+                        </Link>
+                    </Card>
          </div>
         )
     });
@@ -45,12 +47,14 @@ class FrontCategories extends Component {
     const filteredCurved = this.props.items.filter(hat3=> hat3.frontShape === "curved").map(curved => {
         return(
          <div key={curved.id} className="col-6 col-sm-4 col-md-3">
-             <Card className="card">
-                 <CardImg top className="cardsize" src={curved.mainImage} alt={curved.name} />
-                     <CardBody>
-                         <CardTitle>{curved.name}</CardTitle>
-                     </CardBody>
-            </Card>
+                    <Card className="card">
+                        <Link to={`/category/${curved.id}`}>
+                            <CardImg top className="cardsize" src={curved.mainImage} alt={curved.name} />
+                            <CardBody>
+                                <CardTitle>{ curved.name }<br/>{curved.price}</CardTitle>
+                            </CardBody>
+                        </Link>
+                    </Card>
          </div>
         )
     });
@@ -59,11 +63,13 @@ class FrontCategories extends Component {
         return(
          <div key={unstructure.id} className="col-6 col-sm-4 col-md-3">
              <Card className="card">
-                 <CardImg top className="cardsize" src={unstructure.mainImage} alt={unstructure.name} />
-                     <CardBody>
-                         <CardTitle>{unstructure.name}</CardTitle>
-                     </CardBody>
-            </Card>
+                        <Link to={`/category/${unstructure.id}`}>
+                            <CardImg top className="cardsize" src={unstructure.mainImage} alt={unstructure.name} />
+                            <CardBody>
+                                <CardTitle>{ unstructure.name }<br/>{unstructure.price}</CardTitle>
+                            </CardBody>
+                        </Link>
+                    </Card>
          </div>
         )
     });

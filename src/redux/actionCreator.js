@@ -1,4 +1,4 @@
-import { Item } from 'semantic-ui-react';
+
 import * as ActionTypes from './actionTypes'
 
 export const addToCart = (item) => ({

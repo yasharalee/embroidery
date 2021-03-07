@@ -1,16 +1,22 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 
 class ShoppingArr extends Component {
- 
+
+   
     render() {
+
+        
         
         const cartArray = this.props.arrayOfCart;
 
-        if (cartArray.length >= 1 ) {
-           
+
+        if (cartArray.length >= 1) {
             const ArrToMap = cartArray.map(itemInCart => {
                 return (
-                    <img src={itemInCart.mainImage} key={itemInCart.index} width="250px" height="250px"/>
+                    <Link to={`/category/${itemInCart.id}`}>
+                        <img src={itemInCart.mainImage} alt={itemInCart.name} key={itemInCart.id - (Math.random())} width="250px" height="250px" />
+                    </Link>
                 )
             })
             return ( 
