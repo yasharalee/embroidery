@@ -17,9 +17,6 @@ class FrontCategories extends Component {
                     <Card className="card">
                         <Link to={`/category/${flatbil.id}`}>
                             <CardImg top className="cardsize" src={flatbil.mainImage} alt={flatbil.name} />
-                            <CardBody>
-                                <CardTitle>{ flatbil.name }<br/>{flatbil.price}</CardTitle>
-                            </CardBody>
                         </Link>
                     </Card>
                 </div>
@@ -35,9 +32,6 @@ class FrontCategories extends Component {
                     <Card className="card">
                         <Link to={`/category/${slightly.id}`}>
                             <CardImg top className="cardsize" src={slightly.mainImage} alt={slightly.name} />
-                            <CardBody>
-                                <CardTitle>{ slightly.name }<br/>{slightly.price}</CardTitle>
-                            </CardBody>
                         </Link>
                     </Card>
          </div>
@@ -50,9 +44,6 @@ class FrontCategories extends Component {
                     <Card className="card">
                         <Link to={`/category/${curved.id}`}>
                             <CardImg top className="cardsize" src={curved.mainImage} alt={curved.name} />
-                            <CardBody>
-                                <CardTitle>{ curved.name }<br/>{curved.price}</CardTitle>
-                            </CardBody>
                         </Link>
                     </Card>
          </div>
@@ -65,9 +56,6 @@ class FrontCategories extends Component {
              <Card className="card">
                         <Link to={`/category/${unstructure.id}`}>
                             <CardImg top className="cardsize" src={unstructure.mainImage} alt={unstructure.name} />
-                            <CardBody>
-                                <CardTitle>{ unstructure.name }<br/>{unstructure.price}</CardTitle>
-                            </CardBody>
                         </Link>
                     </Card>
          </div>
@@ -79,8 +67,8 @@ class FrontCategories extends Component {
 
             <div>
                 <ul className="nav nav-tabs" role="tablist">
-                    <li className="nav-item  active">
-                    <a className="nav-link" data-toggle="tab" href="#flat">Flat Bill</a>
+                    <li className="nav-item  ">
+                    <a className="nav-link active" data-toggle="tab" href="#flat" >Flat Bill</a>
                     </li>
                     <li className="nav-item">
                     <a className="nav-link " data-toggle="tab" href="#slightly">Slightly-Curved</a>

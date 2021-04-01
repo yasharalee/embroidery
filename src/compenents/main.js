@@ -15,7 +15,8 @@ import { addToCart } from '../redux/actionCreator';
 const mapStateToProps = state => {
     return {
         Items: state.Items,
-        CartArr: state.CartArr
+        CartArr: state.CartArr,
+        variation: state.variation
     };
 };
 
@@ -28,18 +29,6 @@ const mapDispatchToProps = {
 
 
 class Main extends Component {
-
-  
-    constructor(props) {
-        super(props);
-
-    
-   
-    }
-
-
-   
-
   
 
     render() { 
@@ -64,8 +53,9 @@ class Main extends Component {
         const itemwithid = ({ match }) => {
             return (
                 <DetailPage
-                    item={this.props.Items.filter(item => item.id === +match.params.itemId)[0]}
+                    item={this.props.Items.Items.filter(item => item.id === +match.params.itemId)[0]}
                     addToCart={this.props.addToCart}
+                    variation={this.props.variation.variation.filter(itemV => itemV.mainItemId === +match.params.itemId)}
                     
                 />
             );
@@ -79,7 +69,7 @@ class Main extends Component {
                    <Navbar />
                     <Switch>
                         <Route exact path='/Cart' component={Cartpass} />
-                        <Route exact path='/category' render={() => <FrontCategories items={this.props.Items} />} />
+                        <Route exact path='/category' render={() => <FrontCategories items={this.props.Items.Items} />} />
                         <Route path='/category/:itemId' component={itemwithid} />
                         <Redirect to='/category'/>
                     </Switch>
