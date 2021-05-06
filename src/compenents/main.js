@@ -7,7 +7,8 @@ import Navbar from './navbar'
 import FrontCategories  from "./frontCategories";
 import Cart from './cart';
 import DetailPage from './chosenitem';
-import { addToCart } from '../redux/actionCreator';
+import { addToCart, fetchItems, fetchvar, addtocustomize } from '../redux/actionCreator';
+import Custom from './custom.js';
 
 
 
@@ -16,26 +17,32 @@ const mapStateToProps = state => {
     return {
         Items: state.Items,
         CartArr: state.CartArr,
-        variation: state.variation
+        variation: state.variation,
+        customized: state.customized
     };
 };
 
 const mapDispatchToProps = {
-   
-    addToCart: (item) => ( addToCart(item))
+    fetchvar: () => (fetchvar()),
+    fetchItems: () => (fetchItems()),
+    addToCart: (item) => (addToCart(item)),
+    addtocustomize: (item)=>(addtocustomize(item)),
 
 };
 
 
 
 class Main extends Component {
+
+    componentDidMount() {
+        this.props.fetchItems();
+        this.props.fetchvar();
+    }
   
 
     render() { 
 
         const Cartpass = () => {
-            console.log(this.props.CartArr.CartArr);
-            
             return (
                 <Cart
                     CartArrayS={this.props.CartArr.CartArr}
@@ -56,11 +63,30 @@ class Main extends Component {
                     item={this.props.Items.Items.filter(item => item.id === +match.params.itemId)[0]}
                     addToCart={this.props.addToCart}
                     variation={this.props.variation.variation.filter(itemV => itemV.mainItemId === +match.params.itemId)}
-                    
+                    errMass={this.props.variation.errMass}
+                    isLoading={this.props.variation.isLoading}
+                    addtocustomize={this.props.addtocustomize}  
                 />
             );
         };
    
+        const FrontCat = () => {
+            return (
+                <FrontCategories
+                    items={this.props.Items.Items}
+                    errMass={this.props.Items.errMass}
+                    isLoading={this.props.Items.isLoading}
+                />
+            );
+        };
+
+        const CustomPage = () => {
+            return (
+                <Custom
+                     customized = { this.props.customized.customized }
+                />
+            )
+        };
     
     
         return (
@@ -69,8 +95,9 @@ class Main extends Component {
                    <Navbar />
                     <Switch>
                         <Route exact path='/Cart' component={Cartpass} />
-                        <Route exact path='/category' render={() => <FrontCategories items={this.props.Items.Items} />} />
-                        <Route path='/category/:itemId' component={itemwithid} />
+                        <Route exact path='/category' component={FrontCat} />
+                    <Route path='/category/:itemId' component={itemwithid} />
+                    <Route path='/customize' component={ CustomPage }/>
                         <Redirect to='/category'/>
                     </Switch>
                     <Footer />

@@ -3,6 +3,10 @@
 
 import React, { Component } from 'react';
 import { Form, FormGroup, Input } from 'reactstrap';
+import { baseUrl } from '../shared/baseUrl';
+import { Link } from 'react-router-dom';
+
+
 
 
 const sortedSize = [
@@ -37,14 +41,15 @@ class RenderItem extends Component {
         this.goback = this.goback.bind(this);
         this.changeColor = this.changeColor.bind(this);
         this.onSelectSize = this.onSelectSize.bind(this);
+        this.addCustom = this.addCustom.bind(this);
     }
 
     
    
 
-    handleSubmit(event) {
+    handleSubmit() {
         
-        for (let i = 0; i < this.quantity.value; i++) {
+        for (let i = 0; i < this.state.quantity; i++) {
             this.props.addToCart(this.state.item);
             
         }
@@ -67,14 +72,13 @@ class RenderItem extends Component {
     }
 
     changeColor(event) {
-        console.log(event.target.value);
          const value =event.target.value;
          this.setState({
              colorbutton: value
          });
          const choosencolor = this.state.variation.filter(filcolor => filcolor.color === value)[0];
         const choosencolor2 = this.state.variation.filter(filcolor => filcolor.color === value);
-        console.log(choosencolor);
+
         this.setState({
                  varColor:value,
                  item: choosencolor,
@@ -119,8 +123,21 @@ class RenderItem extends Component {
                 quantitybox: "none",
                 quantity:"",
             })
+        };
+    };
+
+    addCustom() {
+
+        if (this.state.varColor && this.state.capSize && this.state.quantity) {
+            
+            for (let i = 0; i < this.state.quantity; i++) {
+                this.props.addtocustomize(this.state.item);
+                
+            };
+        } else {
+            alert("please fill required fieldes");
         }
-        console.log(this.state.capSize);
+        
     }
 
     render() {
@@ -131,14 +148,15 @@ class RenderItem extends Component {
         )
         const uniqColor = [...new Set(colorArr)];
        
-        const MakeColors = uniqColor.map(colorsItem => {
-            return (
-                <div className="col-2 col-sm-3 align-items-center" key={(colorsItem.length)-Math.random()+Math.random()}>
-                    <button className="color-item" name="colorbutton" value={colorsItem}
-                        onClick={this.changeColor} style={{ background: colorsItem }}></button>
-                </div>
-            )
+        const MakeColors =  uniqColor.map(colorsItem => {
+                return (
+                    <div className="col-2 col-sm-3 align-items-center" key={(colorsItem.length)-Math.random()+Math.random()}>
+                        <button className="color-item" name="colorbutton" value={colorsItem}
+                            onClick={this.changeColor} style={{ background: colorsItem }}></button>
+                    </div>
+                )
         })
+        
         const sorted = [];
         const sizaArr = [];
         const sizeMap = this.state.variation.map(
@@ -161,8 +179,6 @@ class RenderItem extends Component {
         const pam = [];
         const priceArr = this.state.variation.map(price => price.price);
         priceArr.sort(function (a, b) { return a - b });
-
-        console.log(priceArr);
         
             if (priceArr[0] === priceArr[priceArr.length-1]) {
                 
@@ -173,27 +189,24 @@ class RenderItem extends Component {
                 pam.push(`${priceArr[0]} - ${priceArr[priceArr.length-1]}`);
                 
         }
-        console.log(pam);
-       
-        
-        
+
         return (
             <React.Fragment >
                     <div className="row d-flex">
                         <div className="col-12 col-sm-4">
-                            <img src={item.mainImage} alt={item.name} width="450px" height="350px" className="d-flex img-fluid img-thumbnail mt-4" />
+                            <img src={baseUrl+item.mainImage} alt={item.name} width="450px" height="350px" className="d-flex img-fluid img-thumbnail mt-4" />
                             <div className="row d-flex">
                                 <div className="col">
-                                    <img src={item.mainImage} alt={item.name} width="75px" height="75px" className="d-flex img-fluid img-thumbnail mt-4" />
+                                    <img src={baseUrl+item.mainImage} alt={item.name} width="75px" height="75px" className="d-flex img-fluid img-thumbnail mt-4" />
                                 </div>
                                 <div className="col">
-                                    <img src={item.mainImage} alt={item.name} width="75px" height="75px" className="d-flex img-fluid img-thumbnail mt-4" />
+                                    <img src={baseUrl+item.mainImage} alt={item.name} width="75px" height="75px" className="d-flex img-fluid img-thumbnail mt-4" />
                                 </div>
                                 <div className="col">
-                                    <img src={item.mainImage} alt={item.name} width="75px" height="75px" className="d-flex img-fluid img-thumbnail mt-4" />
+                                    <img src={baseUrl+item.mainImage} alt={item.name} width="75px" height="75px" className="d-flex img-fluid img-thumbnail mt-4" />
                                 </div>
                                 <div className="col">
-                                    <img src={item.mainImage} alt={item.name} width="75px" height="75px" className="d-flex img-fluid img-thumbnail mt-4" />
+                                    <img src={baseUrl+item.mainImage} alt={item.name} width="75px" height="75px" className="d-flex img-fluid img-thumbnail mt-4" />
                                 </div>
                             </div>
                         </div>
@@ -252,10 +265,13 @@ class RenderItem extends Component {
                                 />
                     </FormGroup>
                     <FormGroup>
-                    
+                        <div>
                             <button type="submit"  className="btn btn-primary btn-block" name="addtocart">Add to cart</button>
-                             <button type="button" className="btn btn-primary btn-block" name="customize">Customize</button>
-          
+                        </div>
+                        <div style={{marginTop:10}}>
+                            <Link to="/customize" ><span role="button" type="button" onClick={this.addCustom} className="btn btn-primary btn-block mt-10" name="customize">Customize</span></Link>                
+                        </div>
+        
                     </FormGroup>    
             </Form>
                         </div>
@@ -272,12 +288,18 @@ class RenderItem extends Component {
 
 
 
-function DetailPage({ item, variation, addToCart }) {
-    console.log(variation);
+function DetailPage(props) {
+    
+    const { item, variation, addToCart, addtocustomize } = props;
 
     return (
         <div className="container mb-5 px-5">
-                    <RenderItem item={item} variation={variation}  addToCart={addToCart}  />
+            <RenderItem
+                item={item}
+                variation={variation}
+                addToCart={addToCart}
+                addtocustomize={addtocustomize}
+            />
         </div>
      
            )

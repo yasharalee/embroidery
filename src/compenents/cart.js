@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { Form, FormGroup, Input, Row, Col } from 'reactstrap';
+import { baseUrl } from '../shared/baseUrl';
 
 
 
@@ -9,14 +10,14 @@ class ShoppingArr extends Component {
         super(props);
         this.state = {
             statesArr: ['AL', 'AK', 'AS', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FM', 'FL', 'GA', 'GU',
-    'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT',
-    'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR',
-    'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY'],
+                'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MH', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT',
+                'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'MP', 'OH', 'OK', 'OR',
+                'PW', 'PA', 'PR', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VI', 'VA', 'WA', 'WV', 'WI', 'WY'],
             cartArray: this.props.cartArray,
-            itemquantity:0,
-        }
-        // this.counter = this.counter.bind(this);
-    }
+            itemquantity: 0,
+        };
+        
+    };
 
 
   
@@ -30,8 +31,8 @@ class ShoppingArr extends Component {
             return (
                 <div className="row " key={cartitem.mainItemId + (Math.random() + Math.random() - Math.random())}>
                     <div className="col-2" >
-                        <Link to={`/category/${cartitem.id}`}>
-                            <img src={cartitem.mainImage} width="30px" height="30px" alt={cartitem.name} />
+                        <Link to={`/category/${cartitem.mainItemId}`}>
+                            <img src={baseUrl+cartitem.mainImage} width="30px" height="30px" alt={cartitem.name} />
                         </Link>
                     </div>
                     <div className="col-3">

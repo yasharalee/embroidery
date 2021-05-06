@@ -1,22 +1,23 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
-import { Card, CardImg, CardBody, CardTitle } from "reactstrap";
+import { Card, CardImg} from "reactstrap";
 import 'C:/Users/yashar/Desktop/nucamp folder/3-React/embroidery/node_modules/bootstrap/dist/js/bootstrap';
-
+import { baseUrl } from '../shared/baseUrl';
+import {Loading} from './Loading'
 
 class FrontCategories extends Component {
-
-    
-    
+   
    
     render() {
 
-       const filteredFlat = this.props.items.filter(hat1 => hat1.frontShape === "flatBill").map(flatbil => {
+        const filteredFlat = this.props.items.filter(hat1 => hat1.frontShape === "flatBill").map(flatbil => {
             return (
                 <div key={flatbil.id} className="col-6 col-sm-4 col-md-3 ">
                     <Card className="card">
                         <Link to={`/category/${flatbil.id}`}>
-                            <CardImg top className="cardsize" src={flatbil.mainImage} alt={flatbil.name} />
+                            <CardImg top className="cardsize"
+                                src={baseUrl + flatbil.mainImage}
+                                alt={flatbil.name} />
                         </Link>
                     </Card>
                 </div>
@@ -31,7 +32,9 @@ class FrontCategories extends Component {
          <div key={slightly.id} className="col-6 col-sm-4 col-md-3">
                     <Card className="card">
                         <Link to={`/category/${slightly.id}`}>
-                            <CardImg top className="cardsize" src={slightly.mainImage} alt={slightly.name} />
+                        <CardImg top className="cardsize"
+                            src={baseUrl + slightly.mainImage}
+                            alt={slightly.name} />
                         </Link>
                     </Card>
          </div>
@@ -43,7 +46,9 @@ class FrontCategories extends Component {
          <div key={curved.id} className="col-6 col-sm-4 col-md-3">
                     <Card className="card">
                         <Link to={`/category/${curved.id}`}>
-                            <CardImg top className="cardsize" src={curved.mainImage} alt={curved.name} />
+                        <CardImg top className="cardsize"
+                            src={baseUrl + curved.mainImage}
+                            alt={curved.name} />
                         </Link>
                     </Card>
          </div>
@@ -52,23 +57,49 @@ class FrontCategories extends Component {
 
     const filteredunstructured = this.props.items.filter(yhat4=> yhat4.frontShape === "unstructured").map(unstructure => {
         return(
-         <div key={unstructure.id} className="col-6 col-sm-4 col-md-3">
-             <Card className="card">
+         <div key={unstructure.id} className="col-6 col-sm-4 col-md-3 ">
+             <Card className="card ">
                         <Link to={`/category/${unstructure.id}`}>
-                            <CardImg top className="cardsize" src={unstructure.mainImage} alt={unstructure.name} />
+                        <CardImg top className="cardsize"
+                            src={baseUrl + unstructure.mainImage}
+                            alt={unstructure.name}
+                        />
                         </Link>
                     </Card>
          </div>
         )
     });
+        if (this.props.isLoading) {
+            return (
+                <div className="container">
+                    <div className="row h-100">
+                        <div className="col">
+                            <Loading />
+                        </div>
+                    </div>
+                </div>
+            )
+        }
 
+        if (this.props.errMass) {
+            return (
+                <div className="container">
+                <div className="row">
+                    <div className="col">
+                        <h1>{ this.props.errMass}</h1>
+                    </div>
+                </div>
+            </div>
+                
+            )
+        }
 
         return (
 
             <div>
                 <ul className="nav nav-tabs" role="tablist">
                     <li className="nav-item  ">
-                    <a className="nav-link active" data-toggle="tab" href="#flat" >Flat Bill</a>
+                    <a className="nav-link " data-toggle="tab" href="#flat" >Flat Bill</a>
                     </li>
                     <li className="nav-item">
                     <a className="nav-link " data-toggle="tab" href="#slightly">Slightly-Curved</a>
@@ -76,8 +107,8 @@ class FrontCategories extends Component {
                     <li className="nav-item">
                     <a className="nav-link" data-toggle="tab" href="#curved">Pre-Curved</a>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link" data-toggle="tab" href="#unstruct">Unstructure</a>
+                    <li className="nav-item ">
+                        <a className="nav-link active " data-toggle="tab" aria-current="page" href="#unstruct">Unstructure</a>
                     </li>
                 </ul>
 
@@ -97,7 +128,7 @@ class FrontCategories extends Component {
                             {filteredCurved}
                         </div>
                     </div>
-                    <div id="unstruct" className="container tab-pane fade"><br/>
+                    <div id="unstruct" className="container tab-pane fade active"><br/>
                         <div className="row  mx-auto">
                             {filteredunstructured}
                         </div>

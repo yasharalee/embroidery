@@ -11,9 +11,9 @@ class Navbar extends Component {
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div className="navbar-nav ">
-                <a className="nav-item nav-link active" href="#">Home <span className="sr-only">(current)</span></a>
+                <a className="nav-item nav-link active" href="#">Home</a>
                 <Link to="/category" className="nav-item nav-link " href="#products">Products</Link>
-                <a className="nav-item nav-link " href="#">Customizing</a>
+                <Link to="/customize"  className="nav-item nav-link " href="#">Customizing</Link>
                 <a className="nav-item nav-link " href="#">Quets</a>
                 <a className="nav-item nav-link " href="#">FAQ</a>
               </div>
