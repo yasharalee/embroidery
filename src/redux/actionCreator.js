@@ -93,3 +93,39 @@ export const addtocustomize = (item) => ({
     type: ActionTypes.ADD_TO_CUSTOMIZE,
     payload: item
 });
+
+export const removeFromCustomize = (item) => ({
+    type: ActionTypes.REMOVE_FROM_CUSTOMIZE,
+    payload: item
+});
+
+export const removeFromCart = (item) => ({
+    type: ActionTypes.REMOVE_FROM_CART,
+    payload: item
+});
+
+// export const removeFromCart = (item) => (dispatch) => {
+//     if (!item || item === null || item === undefined) {
+//         dispatch(addManuallNumberOfItems());
+//     } else {
+//         return ({
+//             type: ActionTypes.removeFromCustomize,
+//             payload:item
+//         })
+//     }
+// }
+
+export const sendCustomImageToReducer = (item) => ({
+    type: ActionTypes.SEND_CUSTOM_IMAGE_TO_REDUCER,
+    payload: item
+});
+
+export const addManuallNumberOfItems = (itemsArr) => ({
+    type: ActionTypes.ADD_MANUALL_NUMBER_TO_CUSTOM,
+    payload:itemsArr
+});
+
+export const removeAllFromCustomize = (itemsArr) => ({
+    type: ActionTypes.REMOVE_ALL_FROM_CUSTOMIZE,
+    payload:itemsArr
+});

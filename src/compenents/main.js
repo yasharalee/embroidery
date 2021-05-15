@@ -7,8 +7,15 @@ import Navbar from './navbar'
 import FrontCategories  from "./frontCategories";
 import Cart from './cart';
 import DetailPage from './chosenitem';
-import { addToCart, fetchItems, fetchvar, addtocustomize } from '../redux/actionCreator';
 import Custom from './custom.js';
+import {
+    addToCart, fetchItems,
+    fetchvar, addtocustomize,
+    removeFromCustomize,
+    sendCustomImageToReducer, addManuallNumberOfItems,
+    removeAllFromCustomize
+} from '../redux/actionCreator';
+
 
 
 
@@ -26,7 +33,11 @@ const mapDispatchToProps = {
     fetchvar: () => (fetchvar()),
     fetchItems: () => (fetchItems()),
     addToCart: (item) => (addToCart(item)),
-    addtocustomize: (item)=>(addtocustomize(item)),
+    addtocustomize: (item) => (addtocustomize(item)),
+    removeFromCustomize: (item) => (removeFromCustomize(item)),
+    sendCustomImageToReducer,
+    addManuallNumberOfItems,
+    removeAllFromCustomize,
 
 };
 
@@ -69,6 +80,7 @@ class Main extends Component {
                 />
             );
         };
+
    
         const FrontCat = () => {
             return (
@@ -83,7 +95,14 @@ class Main extends Component {
         const CustomPage = () => {
             return (
                 <Custom
-                     customized = { this.props.customized.customized }
+                    customized={this.props.customized.customized}
+                    addToCart={this.props.addToCart}
+                    addtocustomize={this.props.addtocustomize}
+                    removeFromCustomize={this.props.removeFromCustomize}
+                    myFile={this.props.customized.myFile}
+                    sendCustomImageToReducer={this.props.sendCustomImageToReducer}
+                    addManuallNumberOfItems={this.props.addManuallNumberOfItems}
+                    removeAllFromCustomize={this.props.removeAllFromCustomize}
                 />
             )
         };

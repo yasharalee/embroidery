@@ -53,7 +53,6 @@ class RenderItem extends Component {
             this.props.addToCart(this.state.item);
             
         }
-        
     }
 
     goback() {
@@ -134,10 +133,10 @@ class RenderItem extends Component {
                 this.props.addtocustomize(this.state.item);
                 
             };
+            alert("Add all of products you want to customize with same logo then visit the Customizing page to continue")
         } else {
             alert("please fill required fieldes");
-        }
-        
+        }  
     }
 
     render() {
@@ -269,7 +268,13 @@ class RenderItem extends Component {
                             <button type="submit"  className="btn btn-primary btn-block" name="addtocart">Add to cart</button>
                         </div>
                         <div style={{marginTop:10}}>
-                            <Link to="/customize" ><span role="button" type="button" onClick={this.addCustom} className="btn btn-primary btn-block mt-10" name="customize">Customize</span></Link>                
+                                    <button
+                                        type="button"
+                                        onClick={this.addCustom}
+                                        className="btn btn-primary btn-block mt-10"
+                                        name="customize">
+                                        Customize
+                                        </button>
                         </div>
         
                     </FormGroup>    
